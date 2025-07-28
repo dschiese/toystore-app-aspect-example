@@ -28,6 +28,43 @@
                     </compilerArgs>
                 </configuration>
             </plugin>
+
+          <plugin>
+            <groupId>dev.aspectj</groupId>
+            <artifactId>aspectj-maven-plugin</artifactId>
+            <version>1.14</version>
+            <dependencies>
+                <dependency>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjtools</artifactId>
+                    <version>1.9.24</version>
+                </dependency>
+            </dependencies>
+            <configuration>
+                <complianceLevel>21</complianceLevel>
+                <source>21</source>
+                <target>21</target>
+                <!-- Your AspectJ aspects as dependency -->
+                <aspectLibraries>
+                    <aspectLibrary>
+                        <groupId>org.wseresearch</groupId>
+                        <artifactId>generalizedaspect</artifactId>
+                    </aspectLibrary>
+                </aspectLibraries>
+                <encoding>UTF-8</encoding>
+                <Xlint>ignore</Xlint>
+                <showWeaveInfo>true</showWeaveInfo>
+                <verbose>true</verbose>
+            </configuration>
+            <executions>
+                <execution>
+                <goals>
+                    <goal>compile</goal>
+                </goals>
+                </execution>
+            </executions>
+        </plugin>
+
         </plugins>
     </build>
 
@@ -119,5 +156,12 @@
             <scope>test</scope>
             <optional>true</optional>
         </dependency>
+
+        <dependency>
+            <groupId>org.wseresearch</groupId>
+            <artifactId>generalizedaspect</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        
     </dependencies>
 </project>
