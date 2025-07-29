@@ -148,7 +148,12 @@ Then, you should get some results. `?input` may be a blank node as this usually 
 
 ## Explain your data using a web frontend
 
+We provide a frontend that utilizes templates and/or generative AI to create explanations based on the logged data. To set it up, follow https://github.com/WSE-research/frontend_aggregated_explanations.
 
+## FAQ and contact
 
+If you need help set everything up or if you're facing errors that are not covered in the following, contact us or me via e-mail (dennis.schiese@htwk-leipzig.de) or create an issue in this repository and link us.
+
+- ...
 
 
