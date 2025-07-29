@@ -20,6 +20,10 @@ This means, your app needs to implement these, otherwise the aspect won't work.
 
 The implementation of the workflow can be realized as follows:
 
+### Docstring + Sourcecode logging
+
+OPTIONAL: ...
+
 ### Include the aspect and the plugin to your pom.xml
 
 The first step is to include the aspect and the plugin to weave the aspect to your codebase. To do so, include the following snippets to your `pom.xml`
@@ -115,8 +119,32 @@ Run: `docker run`
 
 For docker-compose, see below.
 
-## Test: Query the logged data
+### Testing the implementation
 
+If you now run your application with the included aspect, at the end of and API-request, the proxy should've been called to store the logged methods. To verify this, query the virtuoso instance (frontend accessible under port 8890) with the following query:
+
+```sparql
+PREFIX qa: <http://www.wdaqua.eu/qa#>
+PREFIX oa: <http://www.w3.org/ns/openannotation/core/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX x: <http://example.org#>
+
+SELECT *
+FROM <INSERT_GRAPH>
+WHERE {
+  ?s rdf:type qa:AnnotationOfLogMethod ;
+     prov:actedOnBehalfOf ?caller ;
+     qa:methodName ?methodName ;
+      x:input ?input ;
+      x:output ?output ;
+     oa:annotatedAt ?time;
+     oa:annotatedBy ?annotatedBy .
+}
+```
+
+Then, you should get some results. `?input` may be a blank node as this usually is a rdf:List, to get the values, adjust the query accordingly.
 
 ## Explain your data using a web frontend
 
