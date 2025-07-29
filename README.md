@@ -8,13 +8,17 @@ In our recent research, we were exploring the explainability of software systems
 
 If you use this workflow for your projects we'd like to hear about your findings and suggestions. If you have any question, don't hestitate to contact us.
 
+# Requirements
+
+Currently, the scope of our aspects is limited to API-based systems. Thus, an API-call is the scope of one logged process. The aspects realise this by _annotating_ Spring-annotated methods, in this case the following:
+
+`PostMapping, RequestMapping, GetMapping, PutMapping, DeleteMapping, PatchMapping`.
+
+This means, your app needs to implement these, otherwise the aspect won't work.
+
 ## Implementation
 
 The implementation of the workflow can be realized as follows:
-
-# Requirements -> Move
-
-Currently, the ...
 
 ### Include the aspect and the plugin to your pom.xml
 
@@ -111,6 +115,10 @@ Run: `docker run`
 
 For docker-compose, see below.
 
+## Test: Query the logged data
+
+
+## Explain your data using a web frontend
 
 
 
